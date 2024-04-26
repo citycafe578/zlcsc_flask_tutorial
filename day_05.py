@@ -13,9 +13,9 @@ def home():
 @app.route("/login", methods = ["POST" ,"GET"])
 def login():
     if request.method == "POST":
-        session.permanent = True #把 permanent 打開，默認為 False
+        session.permanent = True
         user = request.form["nm"]
-        session["user"] = user  #創建一個session
+        session["user"] = user
         flash("Login Succesful!")
         return redirect(url_for("user", usr = user))
     else:
@@ -23,7 +23,6 @@ def login():
             flash("U have been logged in!")
             return redirect(url_for("user"))
         return render_template("day_05_login.html")
-
 @app.route("/usr")
 def user():
     if "user" in session:
@@ -37,7 +36,7 @@ def user():
 def logout():
     if "user" in session:
         user = session["user"]
-        flash(f"You have been logged out!", "info")
+        flash(f"You have been logged out!")
     session.pop("user", None)
     return redirect(url_for("login"))
 
