@@ -1,0 +1,7 @@
+{% extends "day_02_base.html "%}
+{% block title %}User{% endblock %}
+{% block content %}
+    {% for item in values %}
+        <p>name: {{item.name}}, email: {{item.email}}</p>
+    {% endfor %}
+{% endblock %}
